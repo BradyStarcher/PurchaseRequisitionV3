@@ -1,17 +1,10 @@
 ﻿@model PurchaseRequisition.Models.Division
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Edit A Division";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
+<h2>Edit A Division</h2>
 
 <h4>Division</h4>
 <hr />
@@ -39,5 +32,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-</body>
-</html>
