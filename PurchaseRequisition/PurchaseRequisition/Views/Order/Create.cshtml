@@ -1,17 +1,10 @@
 ﻿@model PurchaseRequisition.Models.Order
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Create An Order";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
+<h2>Create An Order</h2>
 
 <h4>Order</h4>
 <hr />
@@ -25,16 +18,6 @@
                 <span asp-validation-for="Status" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="BusinessJustification" class="control-label"></label>
-                <input asp-for="BusinessJustification" class="form-control" />
-                <span asp-validation-for="BusinessJustification" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalCostOfItems" class="control-label"></label>
-                <input asp-for="TotalCostOfItems" class="form-control" />
-                <span asp-validation-for="TotalCostOfItems" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="ItemID" class="control-label"></label>
                 <input asp-for="ItemID" class="form-control" />
                 <span asp-validation-for="ItemID" class="text-danger"></span>
@@ -45,19 +28,24 @@
                 <span asp-validation-for="BudgetCodeId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ApproverCode" class="control-label"></label>
-                <input asp-for="ApproverCode" class="form-control" />
-                <span asp-validation-for="ApproverCode" class="text-danger"></span>
+                <label asp-for="BusinessJustification" class="control-label"></label>
+                <input asp-for="BusinessJustification" class="form-control" />
+                <span asp-validation-for="BusinessJustification" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="RejectionReason" class="control-label"></label>
-                <input asp-for="RejectionReason" class="form-control" />
-                <span asp-validation-for="RejectionReason" class="text-danger"></span>
+                <label asp-for="TotalCostOfItems" class="control-label"></label>
+                <input asp-for="TotalCostOfItems" class="form-control" />
+                <span asp-validation-for="TotalCostOfItems" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DivisionChair" class="control-label"></label>
                 <input asp-for="DivisionChair" class="form-control" />
                 <span asp-validation-for="DivisionChair" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApproverCode" class="control-label"></label>
+                <input asp-for="ApproverCode" class="form-control" />
+                <span asp-validation-for="ApproverCode" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -73,5 +61,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-</body>
-</html>

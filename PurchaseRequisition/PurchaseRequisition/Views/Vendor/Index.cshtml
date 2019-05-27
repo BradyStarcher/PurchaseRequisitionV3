@@ -1,19 +1,13 @@
 ﻿@model IEnumerable<PurchaseRequisition.Models.Vendor>
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Vendor Index";
 }
 
-<!DOCTYPE html>
+<h2>Vendor Index</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Add Vendor</a>
 </p>
 <table class="table">
     <thead>
@@ -25,10 +19,10 @@
                 @Html.DisplayNameFor(model => model.Info)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.StateContract)
+                @Html.DisplayNameFor(model => model.URL)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.URL)
+                @Html.DisplayNameFor(model => model.StateContract)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Fax)
@@ -37,31 +31,30 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Info)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StateContract)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.URL)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fax)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Info)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.URL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StateContract)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fax)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
-</body>
-</html>

@@ -1,17 +1,10 @@
 ﻿@model PurchaseRequisition.Models.Vendor
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Vendor Details";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
+<h2>Vendor Details</h2>
 
 <div>
     <h4>Vendor</h4>
@@ -30,16 +23,16 @@
             @Html.DisplayFor(model => model.Info)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.StateContract)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.StateContract)
-        </dd>
-        <dt>
             @Html.DisplayNameFor(model => model.URL)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.URL)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StateContract)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StateContract)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Fax)
@@ -53,5 +46,3 @@
     <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
-</body>
-</html>
