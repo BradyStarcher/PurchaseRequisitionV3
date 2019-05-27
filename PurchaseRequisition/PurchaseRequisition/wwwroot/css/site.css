@@ -35,3 +35,27 @@ body {
         display: none;
     }
 }
+
+.main-page {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 1150px;
+    height: 550px;
+    position: center;
+}
+
+.main p {
+    text-align: center;
+    font-size: 30pt;
+    font-weight: bolder;
+}
+
+.main_picture {
+    width: 1180px;
+    position: center;
+}
+
+.footer_link {
+    font-weight: bold;
+}

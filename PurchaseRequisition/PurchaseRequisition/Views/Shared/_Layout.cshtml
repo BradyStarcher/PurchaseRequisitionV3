@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<User> SignInManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,6 +19,8 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -30,10 +36,15 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
-                    <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        <li><a asp-area="" asp-controller="Departments" asp-action="Index">View Departments</a></li>
+                        <li><a asp-area="" asp-controller="Order" asp-action="Index">View Orders</a></li>
+                        <li><a asp-area="" asp-controller="Budgets" asp-action="Index">View Budgets</a></li>
+                        <li><a asp-area="" asp-controller="Item" asp-action="Index">Browse Items</a></li>
+                        <li><a asp-area="" asp-controller="Divisions" asp-action="Index">View Divisions</a></li>
+                        <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+                    }
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
@@ -47,6 +58,8 @@
         <hr />
         <footer>
             <p>&copy; 2019 - PurchaseRequisition</p>
+            <a asp-area="" asp-controller="Home" asp-action="Contact" class="footer_link">Contact</a>
+            <a asp-area="" asp-controller="Home" asp-action="About" class="footer_link">About</a>
         </footer>
     </div>
 
