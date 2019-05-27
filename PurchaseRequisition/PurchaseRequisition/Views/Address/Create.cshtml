@@ -1,17 +1,10 @@
 ﻿@model PurchaseRequisition.Models.Address
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Create An Address";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
+<h2>Create An Address</h2>
 
 <h4>Address</h4>
 <hr />
@@ -58,5 +51,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-</body>
-</html>

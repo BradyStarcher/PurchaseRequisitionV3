@@ -1,17 +1,10 @@
 ﻿@model PurchaseRequisition.Models.Budget
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Create A Budget";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
-</head>
-<body>
+<h2>Create A Budget</h2>
 
 <h4>Budget</h4>
 <hr />
@@ -58,5 +51,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-</body>
-</html>
