@@ -24,6 +24,9 @@ namespace PurchaseRequisition.Data
             string role2 = "Member";
             string desc2 = "This is the members role";
 
+            string role3 = "CFO";
+            string desc3 = "This is the CFO role";
+
             string password = "Develop@90";
 
             if (await roleManager.FindByNameAsync(role1) == null)
@@ -33,6 +36,10 @@ namespace PurchaseRequisition.Data
             if (await roleManager.FindByNameAsync(role2) == null)
             {
                 await roleManager.CreateAsync(new Role(role2, desc2, DateTime.Now));
+            }
+            if (await roleManager.FindByNameAsync(role3) == null)
+            {
+                await roleManager.CreateAsync(new Role(role3, desc3, DateTime.Now));
             }
 
             if (await userManager.FindByNameAsync("bill@develop.com") == null)
@@ -58,7 +65,6 @@ namespace PurchaseRequisition.Data
                     await userManager.AddToRoleAsync(user, role1);
                 }
             }
-
             if (await userManager.FindByNameAsync("jared@develop.com") == null)
             {
                 var user = new User
@@ -103,6 +109,29 @@ namespace PurchaseRequisition.Data
                 {
                     await userManager.AddPasswordAsync(user, password);
                     await userManager.AddToRoleAsync(user, role2);
+                }
+            }
+            if (await userManager.FindByNameAsync("donna@develop.com") == null)
+            {
+                var user = new User
+                {
+                    UserName = "donna@develop.com",
+                    Email = "donna@develop.com",
+                    FirstName = "Donna",
+                    LastName = "Budget",
+                    DivisionID = 6,
+                    DepartmentID = 3,
+                    JobTitle = "CFO",
+                    StartDate = "June 1, 1997",
+                    EndDate = "N/A",
+                    Campus = "Parkersburg"
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role3);
                 }
             }
         }

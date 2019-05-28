@@ -36,14 +36,25 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @if (SignInManager.IsSignedIn(User))
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Member"))
                     {
-                        <li><a asp-area="" asp-controller="Departments" asp-action="Index">View Departments</a></li>
                         <li><a asp-area="" asp-controller="Order" asp-action="Index">View Orders</a></li>
-                        <li><a asp-area="" asp-controller="Budgets" asp-action="Index">View Budgets</a></li>
                         <li><a asp-area="" asp-controller="Item" asp-action="Index">Browse Items</a></li>
+                    }
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <li><a asp-area="Identity" asp-page="/Account/Register">Add New User</a></li>
                         <li><a asp-area="" asp-controller="Divisions" asp-action="Index">View Divisions</a></li>
-                        <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
+                        <li><a asp-area="" asp-controller="Departments" asp-action="Index">View Departments</a></li>
+                        <li><a asp-area="" asp-controller="Roles" asp-action="Index">Role Management</a></li>
+                        <li><a asp-area="" asp-controller="Address" asp-action="Index">View Addresses</a></li>
+                        <li><a asp-area="" asp-controller="Campus" asp-action="Index">View Campuses</a></li>
+                        <li><a asp-area="" asp-controller="Colleges" asp-action="Index">View Colleges</a></li>
+                        <li><a asp-area="" asp-controller="Vendor" asp-action="Index">Browse Vendors</a></li>
+                    }
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("CFO"))
+                    {
+                        <li><a asp-area="" asp-controller="Budgets" asp-action="Index">View Budgets</a></li>
                     }
                 </ul>
                 <partial name="_LoginPartial" />
