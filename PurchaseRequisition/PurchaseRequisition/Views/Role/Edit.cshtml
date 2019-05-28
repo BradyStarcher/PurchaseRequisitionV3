@@ -1,17 +1,10 @@
 ﻿@model PurchaseRequisition.Models.Role
 
 @{
-    Layout = null;
+    ViewData["Title"] = "Edit A Role";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Edit</title>
-</head>
-<body>
+<h2>Edit A Role</h2>
 
 <h4>Role</h4>
 <hr />
@@ -59,5 +52,3 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
-</body>
-</html>
