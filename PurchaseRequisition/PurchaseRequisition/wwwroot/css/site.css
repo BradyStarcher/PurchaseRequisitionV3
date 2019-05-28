@@ -90,3 +90,8 @@ body {
 .dropdown:hover .drawer {
     display: block;
 }
+
+.show {
+    position: absolute;
+    display: block !important;
+}

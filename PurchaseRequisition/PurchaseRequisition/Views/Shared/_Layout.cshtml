@@ -47,24 +47,41 @@
                         <li><a asp-area="" asp-controller="Divisions" asp-action="Index">View Divisions</a></li>
                         <li><a asp-area="" asp-controller="Departments" asp-action="Index">View Departments</a></li>
                         <li><a asp-area="" asp-controller="Roles" asp-action="Index">Role Management</a></li>
+                        <li class="dropdown">
+                            <button class="menu_button">
+                                More Links<i class="fa fa-caret-down"></i>
+                            </button>
+                            <ul class="drawer" id="dropdownNav">
+                                <li><a asp-area="" asp-controller="Address" asp-action="Index">View Addresses</a></li>
+                                <li><a asp-area="" asp-controller="Campus" asp-action="Index">View Campuses</a></li>
+                                <li><a asp-area="" asp-controller="Colleges" asp-action="Index">View Colleges</a></li>
+                                <li><a asp-area="" asp-controller="Vendor" asp-action="Index">Browse Vendors</a></li>
+                            </ul>
+
+                            <script>
+                                var dropbtn = document.querySelector('.menu_button');
+                                dropbtn.addEventListener('click', openMenu);
+                                function openMenu(e) {
+                                    //Fixes double triggers with internal elements
+                                    e.stopPropagation();
+                                    document.getElementById("dropdownNav").classList.toggle("show");
+                                }
+                                window.onclick = function (e) {
+                                    if (!e.target.matches('.menu_button')) {
+                                        var myDropdown = document.getElementById("dropdownNav");
+                                        if (myDropdown.classList.contains('show')) {
+                                            myDropdown.classList.remove('show');
+                                        }
+                                    }
+                                }
+                            </script>
+                        </li>
                     }
                     @if (SignInManager.IsSignedIn(User) && User.IsInRole("CFO"))
                     {
                         <li><a asp-area="" asp-controller="Budgets" asp-action="Index">View Budgets</a></li>
                     }
                 </ul>
-                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
-                {
-                    <div class="dropdown">
-                        <button class="menu_button">More Links</button>
-                        <div class="drawer">
-                            <a asp-area="" asp-controller="Address" asp-action="Index">View Addresses</a>
-                            <a asp-area="" asp-controller="Campus" asp-action="Index">View Campuses</a>
-                            <a asp-area="" asp-controller="Colleges" asp-action="Index">View Colleges</a>
-                            <a asp-area="" asp-controller="Vendor" asp-action="Index">Browse Vendors</a>
-                        </div>
-                    </div>
-                }
                 <partial name="_LoginPartial" />
             </div>
         </div>
