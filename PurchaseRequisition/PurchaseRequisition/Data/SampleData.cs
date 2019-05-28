@@ -27,6 +27,9 @@ namespace PurchaseRequisition.Data
             string role3 = "CFO";
             string desc3 = "This is the CFO role";
 
+            string role4 = "Auditor";
+            string desc4 = "This is the Auditor's role";
+
             string password = "Develop@90";
 
             if (await roleManager.FindByNameAsync(role1) == null)
@@ -40,6 +43,10 @@ namespace PurchaseRequisition.Data
             if (await roleManager.FindByNameAsync(role3) == null)
             {
                 await roleManager.CreateAsync(new Role(role3, desc3, DateTime.Now));
+            }
+            if (await roleManager.FindByNameAsync(role4) == null)
+            {
+                await roleManager.CreateAsync(new Role(role4, desc4, DateTime.Now));
             }
 
             if (await userManager.FindByNameAsync("bill@develop.com") == null)
@@ -132,6 +139,29 @@ namespace PurchaseRequisition.Data
                 {
                     await userManager.AddPasswordAsync(user, password);
                     await userManager.AddToRoleAsync(user, role3);
+                }
+            }
+            if (await userManager.FindByNameAsync("vicki@develop.com") == null)
+            {
+                var user = new User
+                {
+                    UserName = "vicki@develop.com",
+                    Email = "vicki@develop.com",
+                    FirstName = "Vicki",
+                    LastName = "Auditor",
+                    DivisionID = 7,
+                    DepartmentID = 1,
+                    JobTitle = "Auditor",
+                    StartDate = "January 1, 1997",
+                    EndDate = "N/A",
+                    Campus = "Parkersburg"
+                };
+
+                var result = await userManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    await userManager.AddPasswordAsync(user, password);
+                    await userManager.AddToRoleAsync(user, role4);
                 }
             }
         }
