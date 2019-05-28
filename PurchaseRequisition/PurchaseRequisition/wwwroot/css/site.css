@@ -59,3 +59,34 @@ body {
 .footer_link {
     font-weight: bold;
 }
+
+.menu_button {
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.drawer {
+    display: none;
+    background-color: black;
+    min-width: 200px;
+}
+
+    .drawer a {
+        color: white;
+        padding: 20px;
+        text-decoration: none;
+        display: block;
+    }
+
+.dropdown:hover .drawer {
+    display: block;
+}
