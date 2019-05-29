@@ -78,7 +78,14 @@
                     }
                     @if (SignInManager.IsSignedIn(User) && User.IsInRole("CFO"))
                     {
-                        <li><a asp-area="" asp-controller="Budgets" asp-action="Index">View Budgets</a></li>
+                        <li><a asp-area="" asp-controller="Budget" asp-action="Index">View Budgets</a></li>
+                    }
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Auditor"))
+                    {
+                        <li><a asp-area="" asp-controller="Budget" asp-action="Index">View Budgets</a></li>
+                        <li><a asp-area="" asp-controller="Order" asp-action="Index">View Orders</a></li>
+                        <li><a asp-area="" asp-controller="Item" asp-action="Index">Browse Items</a></li>
+                        <li><a asp-area="" asp-controller="Vendor" asp-action="Index">Browse Vendors</a></li>
                     }
                 </ul>
                 <partial name="_LoginPartial" />
