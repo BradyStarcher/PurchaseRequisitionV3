@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace PurchaseRequisition.Models
     {
         public int ID { get; set; }
 
+        [DefaultValue("In Process")]
         public string Status { get; set; }
 
         public string BusinessJustification { get; set; }
