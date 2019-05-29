@@ -10,7 +10,7 @@
 <h2>Vendor Index</h2>
 
 <p>
-    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Member"))
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
     {
         <a asp-action="Create">Add Vendor</a>
     }
@@ -56,7 +56,7 @@
                     @Html.DisplayFor(modelItem => item.Fax)
                 </td>
                 <td>
-                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Member"))
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
                     {
                         <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>
                         <a asp-action="Details" asp-route-id="@item.ID">Details</a>
