@@ -13,6 +13,9 @@ namespace PurchaseRequisition.Data
             : base(options)
         {
         }
+
+        //private string connectionString = @"Server=localhost\SQLEXPRESS;database=CapstoneVThree;MultipleActiveResultSets=true;Trusted_Connection=True;";
+
         public DbSet<PurchaseRequisition.Models.Address> Address { get; set; }
         public DbSet<PurchaseRequisition.Models.Budget> Budget { get; set; }
         public DbSet<PurchaseRequisition.Models.Campus> Campus { get; set; }
