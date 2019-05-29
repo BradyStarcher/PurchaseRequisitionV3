@@ -11,6 +11,6 @@ namespace PurchaseRequisition.Models
 
         public string Name { get; set; }
 
-        public int DivisionID { get; set; }
+        public string Division { get; set; }
     }
 }
