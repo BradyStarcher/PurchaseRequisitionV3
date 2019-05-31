@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<User> SignInManager
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,6 +19,8 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+
+    <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -30,22 +36,72 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Member"))
+                    {
+                        <li><a asp-area="" asp-controller="Order" asp-action="Index">View Orders</a></li>
+                        <li><a asp-area="" asp-controller="Item" asp-action="Index">Browse Items</a></li>
+                    }
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                    {
+                        <li><a asp-area="Identity" asp-page="/Account/Register">Add New User</a></li>
+                        <li><a asp-area="" asp-controller="Division" asp-action="Index">View Divisions</a></li>
+                        <li><a asp-area="" asp-controller="Department" asp-action="Index">View Departments</a></li>
+                        <li><a asp-area="" asp-controller="Role" asp-action="Index">Role Management</a></li>
+                        <li class="dropdown">
+                            <button class="menu_button, dropView">More Links</button>
+                            <ul class="drawer" id="dropdownNav">
+                                <li style="background-color: #222222; height: 50px"><a asp-area="" asp-controller="Address" asp-action="Index"></a></li>
+                                <li class="listView"><a asp-area="" asp-controller="Address" asp-action="Index">View Addresses</a></li>
+                                <li class="listView"><a asp-area="" asp-controller="Campus" asp-action="Index">View Campuses</a></li>
+                                <li class="listView"><a asp-area="" asp-controller="College" asp-action="Index">View Colleges</a></li>
+                                <li class="listView"><a asp-area="" asp-controller="Vendor" asp-action="Index">Browse Vendors</a></li>
+                            </ul>
+
+                            <script>
+                                var dropbtn = document.querySelector('.menu_button');
+                                dropbtn.addEventListener('click', openMenu);
+                                function openMenu(e) {
+                                    //Fixes double triggers with internal elements
+                                    e.stopPropagation();
+                                    document.getElementById("dropdownNav").classList.toggle("show");
+                                }
+                                window.onclick = function (e) {
+                                    if (!e.target.matches('.menu_button')) {
+                                        var myDropdown = document.getElementById("dropdownNav");
+                                        if (myDropdown.classList.contains('show')) {
+                                            myDropdown.classList.remove('show');
+                                        }
+                                    }
+                                }
+                            </script>
+                        </li>
+                    }
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("CFO"))
+                    {
+                        <li><a asp-area="" asp-controller="Budget" asp-action="Index">View Budgets</a></li>
+                    }
+                    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Auditor"))
+                    {
+                        <li><a asp-area="" asp-controller="Budget" asp-action="Index">View Budgets</a></li>
+                        <li><a asp-area="" asp-controller="Order" asp-action="Index">View Orders</a></li>
+                        <li><a asp-area="" asp-controller="Item" asp-action="Index">Browse Items</a></li>
+                        <li><a asp-area="" asp-controller="Vendor" asp-action="Index">Browse Vendors</a></li>
+                    }
                 </ul>
                 <partial name="_LoginPartial" />
             </div>
         </div>
     </nav>
 
-    <partial name="_CookieConsentPartial" />
+    <!--<partial name="_CookieConsentPartial" />-->
 
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
             <p>&copy; 2019 - PurchaseRequisition</p>
+            <a asp-area="" asp-controller="Home" asp-action="Contact" class="footer_link">Contact</a>
+            <a asp-area="" asp-controller="Home" asp-action="About" class="footer_link">About</a>
         </footer>
     </div>
 
