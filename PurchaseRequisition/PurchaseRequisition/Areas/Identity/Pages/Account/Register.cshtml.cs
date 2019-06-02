@@ -102,7 +102,6 @@ namespace PurchaseRequisition.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                //var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
 
                 var user = new User
                 {
@@ -142,7 +141,6 @@ namespace PurchaseRequisition.Areas.Identity.Pages.Account
                 }
             }
 
-            // If we got this far, something failed, redisplay form
             return Page();
         }
     }
